@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Sleep Trainer</string>
+    <string name="check_channel_name">Check Channel</string>
+    <string name="check_channel_desc">This is for notifications to check on your child.</string>
+    <string name="timer_channel_name">Timer Channel</string>
+    <string name="timer_channel_desc">This is for the timer notification.</string>
+    <string name="timer_notification_title">Timer</string>
+    <string name="check_notification_title">Time\'s Up!</string>
+    <string name="check_notification_text">Time to go check on your child!</string>
+    <string name="start_button_text">Start</string>
+    <string name="timer_all_zeroes">0:00</string>
+</resources>
