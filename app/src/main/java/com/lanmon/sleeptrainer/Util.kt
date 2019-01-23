@@ -13,7 +13,7 @@ import com.lanmon.sleeptrainer.Constants.ASLEEP_BUTTON_CODE
 import com.lanmon.sleeptrainer.Constants.AWAKE_BUTTON_CODE
 import com.lanmon.sleeptrainer.Constants.TIMER_NOTIFICATION_CODE
 
-const val secondsPerMinute = 1
+const val secondsPerMinute = 60
 const val oneSecond = 1000L
 const val fiveMinutes = oneSecond * secondsPerMinute * 5
 const val tenMinutes = fiveMinutes + fiveMinutes
