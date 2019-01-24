@@ -161,6 +161,3 @@ fun Context.isServiceRunning(serviceClass: Class<*>): Boolean {
     return false
 }
 
-inline fun <reified T> Activity.switchTo() {
-    startActivity(Intent(this, T::class.java))
-}
