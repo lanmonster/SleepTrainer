@@ -21,4 +21,9 @@
         <item quantity="one">"yay! only took %d check…</item>
         <item quantity="other">"yay! only took %d checks…</item>
     </plurals>
+    <string name="cancel_button_text">Cancel</string>
+    <string name="time_elapsed_label">Total time elapsed:</string>
+    <string name="num_checks_label">Number of checks:</string>
+    <string name="zero_checks">0</string>
+    <string name="time_started_key">timer_started_at</string>
 </resources>

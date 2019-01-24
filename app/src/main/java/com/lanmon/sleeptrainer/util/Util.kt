@@ -1,19 +1,25 @@
-package com.lanmon.sleeptrainer
+package com.lanmon.sleeptrainer.util
 
 import android.app.*
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.ServiceConnection
 import android.os.Build
 import android.os.CountDownTimer
+import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.lanmon.sleeptrainer.Constants.ASLEEP_BUTTON_CODE
-import com.lanmon.sleeptrainer.Constants.AWAKE_BUTTON_CODE
-import com.lanmon.sleeptrainer.Constants.TIMER_NOTIFICATION_CODE
+import com.lanmon.sleeptrainer.R
+import com.lanmon.sleeptrainer.data.TimerService
+import com.lanmon.sleeptrainer.ui.MainActivity
+import com.lanmon.sleeptrainer.util.Constants.ASLEEP_BUTTON_CODE
+import com.lanmon.sleeptrainer.util.Constants.AWAKE_BUTTON_CODE
+import com.lanmon.sleeptrainer.util.Constants.TIMER_NOTIFICATION_CODE
 
-const val secondsPerMinute = 60
+const val secondsPerMinute = 1
 const val oneSecond = 1000L
 const val fiveMinutes = oneSecond * secondsPerMinute * 5
 const val tenMinutes = fiveMinutes + fiveMinutes
@@ -36,6 +42,17 @@ class ServiceCountDownTimer(
     override fun onTick(millisUntilFinished: Long) {
         _timeLeft.postValue(millisUntilFinished)
         onTickCallback(millisUntilFinished)
+    }
+
+}
+
+class TimerServiceConnection(private val onConnectCallback: (timerService: TimerService) -> Unit, private val onDisconnectCallback: () -> Unit) : ServiceConnection {
+    override fun onServiceDisconnected(name: ComponentName?) {
+        onDisconnectCallback()
+    }
+
+    override fun onServiceConnected(name: ComponentName?, service: IBinder) {
+        onConnectCallback((service as TimerService.TimerServiceBinder).getService())
     }
 
 }
@@ -85,7 +102,9 @@ private fun Context.buildAwakeButtonIntent(num: Int) = PendingIntent.getActivity
     PendingIntent.FLAG_CANCEL_CURRENT
 )
 
-fun Context.buildCheckNotification(num: Int) = NotificationCompat.Builder(this, Constants.CHECK_CHANNEL_ID)
+fun Context.buildCheckNotification(num: Int) = NotificationCompat.Builder(this,
+    Constants.CHECK_CHANNEL_ID
+)
     .setContentTitle(getString(R.string.check_notification_title))
     .setContentText(getString(R.string.check_notification_text))
     .setSmallIcon(R.mipmap.ic_launcher)
@@ -140,4 +159,8 @@ fun Context.isServiceRunning(serviceClass: Class<*>): Boolean {
         }
     }
     return false
+}
+
+inline fun <reified T> Activity.switchTo() {
+    startActivity(Intent(this, T::class.java))
 }

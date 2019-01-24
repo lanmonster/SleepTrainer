@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.lanmon.sleeptrainer">
-<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.lanmon.sleeptrainer">
+
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
     <application
             android:allowBackup="false"
             android:icon="@mipmap/ic_launcher"
@@ -10,15 +14,20 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity"
-        android:launchMode="singleTask">
+        <meta-data
+                android:name="com.google.android.gms.ads.APPLICATION_ID"
+                android:value="ca-app-pub-3750115849025588~6338256481"/>
+        <activity
+                android:name=".ui.MainActivity"
+                android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <service android:name=".TimerService"/>
+
+        <service android:name=".data.TimerService"/>
     </application>
 
 </manifest>
