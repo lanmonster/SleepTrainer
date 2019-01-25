@@ -26,4 +26,5 @@
     <string name="num_checks_label">Number of checks:</string>
     <string name="zero_checks">0</string>
     <string name="time_started_key">timer_started_at</string>
+    <string name="progress_bar_max_key">max</string>
 </resources>

@@ -69,7 +69,7 @@
                 android:indeterminate="false"
                 android:progressDrawable="@drawable/circle_progress_bar"
                 android:progressBackgroundTint="@color/grey"
-                android:max="5000"
+                tools:max="5000"
                 android:progress="0"
                 tools:progress="4000"
                 android:rotation="90"

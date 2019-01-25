@@ -89,9 +89,11 @@ class MainActivity : AppCompatActivity() {
             onTimerStopped()
         }
 
+        setProgressBarMax(preferences.getLong(getString(R.string.progress_bar_max_key), fiveMinutes))
+
         start_button.setOnClickListener {
             if (!isTimerStarted) {
-                progressBar.max = fiveMinutes.toInt()
+                setProgressBarMax(fiveMinutes)
                 progressBar.progress = fiveMinutes.toInt()
                 startTimer(timerServiceIntent)
                 val startTime = SystemClock.elapsedRealtime()
@@ -104,6 +106,8 @@ class MainActivity : AppCompatActivity() {
         cancel_button.setOnClickListener {
             if (isTimerStarted) {
                 elapsed_time.stop()
+                elapsed_time.base = SystemClock.elapsedRealtime()
+                setProgressBarMax(fiveMinutes)
                 progressBar.progress = 0
                 stopTimer()
             }
@@ -124,10 +128,10 @@ class MainActivity : AppCompatActivity() {
                 startTimer(
                     Intent(this, TimerService::class.java).also {
                         it.putExtra(getString(R.string.intent_time_remaining), if (numChecks == 1) {
-                            progressBar.max = tenMinutes.toInt()
+                            setProgressBarMax(tenMinutes)
                             tenMinutes
                         } else {
-                            progressBar.max = fifteenMinutes.toInt()
+                            setProgressBarMax(fifteenMinutes)
                             fifteenMinutes
                         })
                         it.putExtra(getString(R.string.intent_num_checks), numChecks + 1)
@@ -151,8 +155,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun subscribeUi() {
         timerService.timer.timeLeft.observe(this, Observer {
-            progressBar.progress = it.toInt()
-            chronometer.text = applicationContext.millisToMinutesSeconds(it)
+            if (isTimerStarted) {
+                progressBar.progress = it.toInt()
+                chronometer.text = applicationContext.millisToMinutesSeconds(it)
+            }
         })
         timerService.checks.observe(this, Observer {
             num_checks.text = (it - 1).toString()
@@ -177,6 +183,7 @@ class MainActivity : AppCompatActivity() {
         stopService(Intent(this, TimerService::class.java))
         notificationManager.cancelAll()
         isTimerStarted = false
+        setProgressBarMax(fiveMinutes)
         onTimerStopped()
     }
 
@@ -195,4 +202,9 @@ class MainActivity : AppCompatActivity() {
     private fun getNewAd() = adView.loadAd(AdRequest.Builder()
         .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
         .build())
+
+    private fun setProgressBarMax(value: Long) {
+        progressBar.max = value.toInt()
+        preferences.edit().putLong(getString(R.string.progress_bar_max_key), value).apply()
+    }
 }
