@@ -3,7 +3,6 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.lanmon.sleeptrainer">
 
-
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
@@ -26,8 +25,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <service android:name=".data.TimerService"/>
+        <receiver android:name=".ui.AsleepReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="asleep"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
