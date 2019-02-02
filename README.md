@@ -22,5 +22,5 @@ In less than a week, most infants will fall asleep shortly with minimal crying.
 With consistency, and enough daytime sleep, they will usually sleep through the night after being trained at bedtime.
 If baby continues to wake during the night after being trained to fall asleep at bedtime, start training for the first wake during the night.
 
-If sleep training does not work after being consistend for more than a week, it could suggest that there is a more complicated issue going on. Call your pediatrician if there is anything you are concerned about.
+If sleep training does not work after being consistend for more than a week, it could suggest that there is a more complicated issue going on. **Call your pediatrician** if there is anything you are concerned about.
 
