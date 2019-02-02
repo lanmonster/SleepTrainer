@@ -13,3 +13,14 @@ For those who wake up during the night, or have trouble falling asleep at bedtim
 6. When 10 minutes is up, go in and do the same thing as before
 7. Check in after every 10-15 minutes. keep in mind, the more you often you check, the longer baby will cry
 
+
+
+## Info
+
+If baby wakes up in the middle of the night, do whatever you need to to get them back to sleep.
+In less than a week, most infants will fall asleep shortly with minimal crying.
+With consistency, and enough daytime sleep, they will usually sleep through the night after being trained at bedtime.
+If baby continues to wake during the night after being trained to fall asleep at bedtime, start training for the first wake during the night.
+
+If sleep training does not work after being consistend for more than a week, it could suggest that there is a more complicated issue going on. Call your pediatrician if there is anything you are concerned about.
+
