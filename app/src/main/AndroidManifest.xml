@@ -1,36 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.lanmon.sleeptrainer">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.lanmon.sleeptrainer">
 
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
-            android:allowBackup="false"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-            tools:ignore="GoogleAppIndexingWarning">
-        <meta-data
-                android:name="com.google.android.gms.ads.APPLICATION_ID"
-                android:value="ca-app-pub-3750115849025588~6338256481"/>
-        <activity
-                android:name=".ui.MainActivity"
-                android:launchMode="singleTask">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <receiver
+            android:name=".internal.NotificationActionReceiver"
+            android:enabled="true"
+            android:exported="false"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+        <service
+            android:name=".ui.BackgroundTimer"
+            android:enabled="true"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3750115849025588~6338256481" />
+
+        <activity
+            android:name=".ui.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".data.TimerService"/>
-        <receiver android:name=".ui.AsleepReceiver" android:exported="false">
-            <intent-filter>
-                <action android:name="asleep"/>
-            </intent-filter>
-        </receiver>
+        <activity android:name=".ui.SettingsActivity"
+            android:parentActivityName=".ui.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lanmon.sleeptrainer.ui.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:id="@+id/child_name"
+        android:key="child_name_preference"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Child's Name"
+        android:defaultValue="your child"
+        android:summary="The name you want to appear in the notification"/>
+</PreferenceScreen>

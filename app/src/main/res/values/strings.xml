@@ -6,7 +6,7 @@
     <string name="timer_channel_desc">This is for the timer notification.</string>
     <string name="timer_notification_title">Timer</string>
     <string name="check_notification_title">Time\'s Up!</string>
-    <string name="check_notification_text">Time to go check on your child!</string>
+    <string name="check_notification_text">Time to go check on %s!</string>
     <string name="start_button_text">Start</string>
     <string name="timer_all_zeroes">0:00</string>
     <string name="timer_time">%1$d:%2$s</string>
@@ -27,4 +27,12 @@
     <string name="zero_checks">0</string>
     <string name="time_started_key">timer_started_at</string>
     <string name="progress_bar_max_key">max</string>
+    <string name="state_extra_key">state</string>
+    <string name="num_checks_extra_key">numChecks</string>
+    <string name="time_extra_key">time</string>
+    <string name="action_start_background_timer">START_BACKGROUND</string>
+    <string name="action_stop_background_timer">STOP_BACKGROUND</string>
+    <string name="preferences_name">prefs</string>
+    <string name="child_name_preference">child_name_preference</string>
+    <string name="timer_start_time_preference">start_time</string>
 </resources>
